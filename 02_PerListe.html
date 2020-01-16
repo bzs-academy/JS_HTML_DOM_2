@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 50%;
+                margin: 0 auto;
+                font-family: Helvetica;
+            }
+            table thead tr {
+                background: #262626;
+                color: white;
+            }
+            table tbody tr:nth-child(even) td {
+                background: #cdcaca;
+            }
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 10px;
+                min-width: 150px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <h2>Personel Listesi</h2>
+
+        <form>
+            Isim : <input type="text"> <br><br>
+            Soyisim : <input type="text"> <br><br>
+            Departman : <input type="text"> <br><br>
+        </form>
+
+        <br>
+        <button>Ekle</button>
+
+        <br><br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Isim</th>
+                    <th>Soyisim</th>
+                    <th>Departman</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    
+
+        <script>
+
+            // to display or not to display with ternary operator
+            document.querySelectorAll('table tr td').length !== 0 ?
+                document.getElementsByTagName('table')[0].style.display = 'block'
+            :
+                document.getElementsByTagName('table')[0].style.display = 'none'
+
+            // to get the inputs' value
+            var data = document.forms[0];
+
+            // onclick event
+            document.querySelector('button').addEventListener('click', () => {
+                var tableRow = [];
+
+                for (var i = 0; i < data.length; i++) {
+                    tableRow.push(data[i].value)
+                }
+                console.log(tableRow);
+
+                // to add the data to the table as a new row
+                var tableBody = document.querySelectorAll('table tbody')[0];
+                console.log(tableBody);
+
+                tableBody.innerHTML += `
+                                            <tr>
+                                                <td>${tableRow[0]}</td>
+                                                <td>${tableRow[1]}</td>
+                                                <td>${tableRow[2]}</td>
+                                            </tr>
+                                        `;
+                
+                document.querySelector('table').style.display = 'block';
+
+                // to delete the content of inputs
+                for (var i = 0; i < data.length; i++) {
+                    data[i].value = '';
+                }
+
+
+            })
+            
+        
+        </script>
+        
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS DOM</title>
+    <style>
+        body {
+            position: relative;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            background: rgb(92, 161, 229);
+        }
+        .box.one {
+            top: 200px;
+            left: 400px;
+        }
+        .box.two {
+            top: 400px;
+            left: 200px;
+        }
+        .box.three {
+            top: 400px;
+            left: 600px;
+        }
+        .box.four {
+            top: 600px;
+            left: 400px;
+        }
+    </style>
+
+</head>
+<body>
+        <div class="container">
+            <div class="box one"></div>
+            <div class="box two"></div>
+            <div class="box three"></div>
+            <div class="box four"></div>
+        </div>
+
+
+        <script>
+            document.body.addEventListener('load', set_change());
+
+            function set_change () {
+                setInterval(changeFunc, 1000);
+                setInterval(rotate, 1000);
+            }
+
+            function changeFunc () {
+
+                var divBox = document.getElementsByClassName('box');
+
+                let producedNumber = () => Math.floor(Math.random() * 256)
+                
+                for (var i = 0; i < divBox.length; i++) {
+                    var num1, num2, num3;
+                    num1 = producedNumber();
+                    num2 = producedNumber();
+                    num3 = producedNumber();
+
+                    divBox[i].style.background = `rgb(${num1}, ${num2}, ${num3})`;
+                }
+
+            }
+
+            function rotate() {
+                var divs =  document.getElementsByClassName('box');
+                
+                const produce_number = () => {
+                    return Math.floor(Math.random() * 360);
+                }
+                for (var i=0; i < divs.length; i++) {
+                    divs[i].style.transform = `rotate(${produce_number()}deg)`;
+                    // divs[i].style.transition = "rotate 1.5s";
+                }
+            }
+    
+
+
+
+        
+        
+        </script>
+</body>
+</html>

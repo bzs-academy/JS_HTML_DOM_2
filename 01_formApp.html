@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <h2>Finding HTML Elements Using document.forms</h2>
+
+        <form>
+            Title : <input type="text"> <br><br>
+            Href : <input type="text"> <br><br>
+        </form>
+
+        <br>
+        <button onclick="myFunc()">Send</button>
+
+        <ul>
+
+        </ul>
+
+        <script>
+            function myFunc () {
+                var x = document.forms[0];
+                console.log(x);
+
+                document.getElementsByTagName('ul')[0].innerHTML += `<li><a> ${x[0].value} </a></li>`;
+
+                document.querySelector('ul li a').href = x[1].value;
+                document.querySelector('ul li a').target = '_blank';
+
+
+            }
+        
+        </script>
+        
+    </body>
+</html>
+
